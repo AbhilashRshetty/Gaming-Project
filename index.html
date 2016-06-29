@@ -1,0 +1,110 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Home page</title>
+
+<style>
+*{
+margin:0px;
+padding:0px;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="js/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+
+<body onload="startNow()" bgcolor="#696969" ng-app="myApp" ng-controller="myCtrl">
+<div id="big-group">
+			
+
+			
+		<div id="menu" style=" background-color:#333232;padding: 10px;width:100%;">
+			<!--<img src="images/logo.jpg" style=" border-radius: 8px;">-->
+		</div>
+
+		<div id="myDiv" style="padding: 100px;width: 535px;margin-left: auto;margin-right: auto;display: inline-flex;">
+			<div id="sub-main1" style="text-align: center;border: 1px solid #fff;height: 46px;width: 109px;padding: 13px;background-color: green;    margin-left: 10px;">Green</div>
+			<div  id="sub-main2" style="text-align: center;border: 1px solid #fff;height: 46px;width: 109px;padding: 13px;background-color: red;    margin-left: 10px;">Red</div>
+			<div id="sub-main3" style="text-align: center;border: 1px solid #fff;height: 46px;width: 109px;padding: 13px;background-color: blue;    margin-left: 10px;">Blue</div>
+		</div></div></b>
+			<input type="button" id="Start-button" value="start" style="padding: 12px 21px; border-radius: 8px;    margin-left: 108px;" ng-click="startNow()" />
+			<input type="button" id="Stop-button" value="stop" style="padding: 12px 21px; border-radius: 8px;" ng-click="stopNow()"/>
+			<input type="button" id="c-button" value="Get Count" style="padding: 12px 21px; border-radius: 8px;" ng-click="getCount()"/>
+
+			<label>Count is : {{count}}</label>
+			
+
+
+	<div id="footer" style=	"background-color:#333232;text-align:center;padding:25px;margin-top:202px;position:absolute;bottom:0;width:100%;">
+			<p style="color:#848484;"> Designed by &nbsp;<a href="#" style="font-family: sans-serif;color:white;text-decoration: none;"><b>impel</b></a></p>
+	</div>
+  
+</div>
+<script>
+
+var app = angular.module("myApp",[]);
+app.controller("myCtrl",function($scope){
+
+		var timer = null, 
+		 interval = 1000,
+        value = 0, c=0;
+        var divs,s,e;
+	$scope.startNow = function(){
+		if (timer !== null) return;
+			timer=setInterval(function(){
+			var id = document.getElementById("myDiv");
+			var parent = angular.element(id);
+			var divs = parent.children();
+		 		while (divs.length) {
+		 			c++;
+		        parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+		    	}
+			},interval);
+	}			
+	$scope.stopNow = function(){
+     			/*clearInterval(timer);
+     			timer = null;		*/
+     			window.location.reload(false);
+    }
+    $scope.getCount = function(){
+     			$scope.count = c;
+     }
+
+});
+
+/*	$(document).ready(function(){
+		var timer = null, 
+        interval = 1000,
+        value = 0;
+        var divs;
+		$( "#Start-button" ).click(function() {
+	  		if (timer !== null) return;
+			timer=setInterval(function(){
+	     	var parent = $("#myDiv");
+		 	var divs = parent.children();
+		 		while (divs.length) {
+		        parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+		    	}
+			},interval);
+
+		});
+		 	$("#Stop-button").click(function() {
+     			 clearInterval(timer);
+      			timer = null
+   			 });
+	});	
+
+*/
+
+</script>
+
+</body>
+</html>
+
+    	
+    	
+            
